@@ -3,11 +3,15 @@ let noteCount = 1;
 const submitButton = document.querySelector(".submit-btn");
 submitButton.addEventListener("click", () => {
     // grab the input
-    const noteTextarea = document.querySelector(".note-input");
+    const noteTitleTag = document.querySelector("#note-title");
+    const noteTextarea = document.querySelector("#note-input");
     const input = noteTextarea.value;
+    const noteTitle = noteTitleTag.value;
     noteTextarea.value = '';    // clear the input
+    noteTitleTag.value = '';
 
-    const card = makeNotesCard(`Note ${noteCount++}`, input);
+
+    const card = makeNotesCard(noteTitle, input);
     const notesContainer = document.querySelector(".notes");
     notesContainer.appendChild(card);
 });
@@ -48,7 +52,10 @@ searchSubmit.addEventListener("click", () => {
     // search in each card individually
     const cards = document.querySelectorAll(".note-cards");
     cards.forEach(card => {
-        if (!(card.firstElementChild.children[1].textContent.includes(searchInput))) {
+        // checking the note and note title, for search query
+        const title = card.firstElementChild.children[0].textContent;
+        const description = card.firstElementChild.children[1].textContent;
+        if (!(title.includes(searchInput) || description.includes(searchInput))) {
             card.style.display = "none";
         }
     });
