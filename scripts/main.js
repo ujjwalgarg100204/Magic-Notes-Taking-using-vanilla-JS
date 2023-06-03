@@ -34,6 +34,9 @@ newNoteForm.addEventListener("submit", ev => {
 		desc: newNoteDescText.value,
 	};
 
+	// validate input
+	if (note.title === "" || note.desc === "") return;
+
 	// add the note to screen
 	addNoteToScreen(note);
 
