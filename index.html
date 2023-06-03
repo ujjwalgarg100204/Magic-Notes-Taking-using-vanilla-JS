@@ -1,68 +1,105 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Magic Notes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="scripts/main.js" defer></script>
-</head>
-<body>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="shortcut icon"
+			href="./images/favicon.png"
+			type="image/x-icon"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="space-y-6">
+		<div class="navbar bg-base-100 items-center">
+			<div class="flex-1">
+				<a class="hidden lg:block btn btn-ghost normal-case text-3xl">
+					Magic Notes
+				</a>
+				<img
+					src="./images/brand-icon.png"
+					alt="brand icon"
+					class="lg:hidden w-10"
+				/>
+			</div>
+			<form class="flex-none gap-2 mb-0" data-search-form>
+				<div class="form-control">
+					<input
+						type="text"
+						placeholder="notes..."
+						class="input input-bordered input-sm md:input-md lg:input-lg w-24 md:w-auto"
+						data-search-text
+					/>
+				</div>
+				<button
+					class="btn btn-sm md:btn-md lg:btn-lg btn-primary"
+					type="submit"
+					data-search-btn
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+						/>
+					</svg>
+				</button>
+			</form>
+		</div>
+		<main class="container mx-auto space-y-10 px-2">
+			<h1 class="text-2xl font-bold text-center md:text-4xl lg:text-6xl">
+				Create some Magical Notes 🪄
+			</h1>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Magic Notes</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-            </ul>
-        </div>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2 search-text" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success search-submit" type="button">Search</button>
-        </form>
-    </div>
-</nav>
-
-<main>
-    <hr>
-    <h1>Welcome to Magic Notes</h1>
-
-    <div class="card">
-        <div class="card-body">
-            <div class="mb-3">
-                <label for="note-title" class="form-label">Title of Note</label>
-                <input class="form-control" id="note-title">
-            </div>
-            <div class="mb-3">
-                <label for="note-input" class="form-label">Add a Note</label>
-                <textarea class="form-control" id="note-input"></textarea>
-            </div>
-            <button type="button" class="btn btn-primary mb-3 submit-btn">Add Note</button>
-        </div>
-    </div>
-    <hr>
-</main>
-
-<section class="your-notes">
-    <h1>Your notes</h1>
-    <hr>
-    <div class="notes">
-
-    </div>
-
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-</body>
+			<form
+				action="#"
+				class="space-y-6 shadow-2xl p-5 text-center"
+				data-new-note-form
+			>
+				<div class="form-control w-full">
+					<label class="label">
+						<span class="label-text lg:text-lg xl:text-xl"
+							>Title of your Notes</span
+						>
+					</label>
+					<input
+						type="text"
+						placeholder="Type Here..."
+						class="input input-bordered w-full text-base"
+						data-new-note-title-text
+					/>
+				</div>
+				<div class="form-control">
+					<label class="label">
+						<span class="label-text lg:text-lg xl:text-xl"
+							>Description of your Notes</span
+						>
+					</label>
+					<textarea
+						class="textarea textarea-bordered h-24 textarea-lg text-base"
+						placeholder="Edit here ..."
+						data-new-note-description-text
+					></textarea>
+				</div>
+				<button class="btn btn-wide lg:btn-lg">Add</button>
+			</form>
+			<div class="divider"></div>
+			<section
+				class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+				data-notes-container
+			></section>
+		</main>
+		<script src="./scripts/main.js"></script>
+	</body>
 </html>
